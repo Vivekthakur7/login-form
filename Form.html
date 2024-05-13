@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Popup Form</title>
+<style>
+    .popup {
+        display: none;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: #fff;
+        padding: 20px;
+        border: 1px solid #ccc;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        z-index: 9999;
+    }
+</style>
+</head>
+<body bgcolor="pink">
+
+    <img src="vg.jpg"width="130px"><BR>NAME:-VIVEK THAKUR<br>SECTION:-F<br>TEACHER:-Dr.KANTA PRASAD Sir.<br><br>
+
+<left>
+<button onclick="openForm()">LOGIN FORM</button>
+</left>
+<div class="popup" id="popupForm">
+    <h2>Login Form</h2>
+    <form id="loginForm">
+        <label for="username">Username:</label><br>
+        <input type="text" id="username" required><br>
+        <label for="password">Password:</label><br>
+        <input type="password" id="password" required><br><br>
+        <button type="button" onclick="login()">Login</button>
+        <button type="button" onclick="closeForm()">Close</button>
+    </form>
+</div>
+
+<iframe id="displayFrame" style="display:none"></iframe>
+
+<script>
+    function openForm() {
+        document.getElementById("popupForm").style.display = "block";
+    }
+
+    function closeForm() {
+        document.getElementById("popupForm").style.display = "none";
+    }
+
+    function login() {
+        var username = document.getElementById("username").value;
+        var password = document.getElementById("password").value;
+        if (username === "" || password === "") {
+            alert("Please fill out all fields.");
+        } else {
+            var formInfo = "Username: " + username + "<br>Password: " + password;
+            document.getElementById("displayFrame").contentDocument.body.innerHTML = formInfo;
+            document.getElementById("displayFrame").style.display = "block";
+            closeForm();
+        }
+    }
+</script>
+<style>
+    button{
+        background-color: green;
+        color: #fff;
+        text-shadow: 2px;
+        border-radius: 5px;
+    }
+    img{
+        border-radius: 20px;
+        border-style: ridge;
+    }
+</style>
+
+</body>
+</html>
